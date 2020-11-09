@@ -21,3 +21,20 @@
 ////////////////////////
 // 1. Event listener
 
+document.querySelector('.check').addEventListener('click', function() {
+  // const guess = document.querySelector('.guess').value;
+  //returns value as a string
+  //usully whenever we get a value from input interface typof this value is string
+
+  const guess = Number(document.querySelector('.guess').value);
+  console.log(guess);
+  //returns typeof number using method Number()
+
+  if (!guess) {
+    document.querySelector('.message').textContent =
+      'No number!🚫 Please input value between 1 and 20';
+  }
+});
+
+// target.addEventListener(type, listener, useCapture)
+// useCapture accepts True or False (OPTIONAL)
