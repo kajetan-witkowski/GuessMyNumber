@@ -2,7 +2,7 @@
 
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
-document.querySelector('.number').textContent = secretNumber;
+
 //Math.random() returns value from 0 to 1 if we specify the multiply number we get random number from 0 to 20 in this case
 //Math.trunc() change the returning value to integer 1,5 to 1
 //We also adds 1 to the ending value to increase the value to 20 because we are ending with 19.99999999 at the end
@@ -13,7 +13,6 @@ document.querySelector('.check').addEventListener('click', function() {
   //usully whenever we get a value from input interface typeof this value is string
 
   const guess = Number(document.querySelector('.guess').value);
-  console.log(guess);
   //returns typeof number using method Number()
 
   //when there is no input
@@ -25,8 +24,8 @@ document.querySelector('.check').addEventListener('click', function() {
   } else if (guess === secretNumber) {
     document.querySelector('.message').textContent = '🎉 Correct Number!';
     document.querySelector('body').style.backgroundColor = '#60b347';
-
     document.querySelector('.number').style.width = '30rem';
+    document.querySelector('.number').textContent = secretNumber;
 
     //when quess is to high
   } else if (guess > secretNumber) {
@@ -55,3 +54,13 @@ document.querySelector('.check').addEventListener('click', function() {
 //
 // useCapture accepts True or False (OPTIONAL)
 ////////////////////////////////////////////////////////
+
+document.querySelector('.again').addEventListener('click', function() {
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.guess').value = '';
+  score = 20;
+  document.querySelector('.score').textContent = score;
+  document.querySelector('.number').style.width = '15rem';
+});
