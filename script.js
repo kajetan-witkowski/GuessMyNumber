@@ -1,23 +1,5 @@
 'use strict';
 
-// console.log(document.querySelector('.message').textContent);
-// //returns Start quessing
-
-// document.querySelector('.message').textContent = '🎉 Correct Number!';
-// //changing value of p with class message to 🎉 Correct Number!
-
-// console.log(document.querySelector('.message').textContent);
-
-// //returns ' 🎉 Correct Number! ' new value
-
-// document.querySelector('.number').textContent = 13;
-// document.querySelector('.score').textContent = 10;
-
-// document.querySelector('.guess').value = 23;
-
-// console.log(document.querySelector('.guess').value);
-// //returns 23
-
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 document.querySelector('.number').textContent = secretNumber;
@@ -28,30 +10,42 @@ document.querySelector('.number').textContent = secretNumber;
 document.querySelector('.check').addEventListener('click', function() {
   // const guess = document.querySelector('.guess').value;
   //returns value as a string
-  //usully whenever we get a value from input interface typof this value is string
+  //usully whenever we get a value from input interface typeof this value is string
 
   const guess = Number(document.querySelector('.guess').value);
   console.log(guess);
   //returns typeof number using method Number()
 
+  //when there is no input
   if (!guess) {
     document.querySelector('.message').textContent =
       'No number!🚫 Please input value between 1 and 20';
+
+    //when When player wins
   } else if (guess === secretNumber) {
     document.querySelector('.message').textContent = '🎉 Correct Number!';
+    document.querySelector('body').style.backgroundColor = '#60b347';
+
+    document.querySelector('.number').style.width = '30rem';
+
+    //when quess is to high
   } else if (guess > secretNumber) {
     if (score > 0) {
       document.querySelector('.message').textContent = '📈 Too high!';
       score--;
       document.querySelector('.score').textContent = score;
+      document.querySelector('body').style.backgroundColor = '#ff0000';
     } else {
       document.querySelector('.message').textContent = '💥 You lost the game!';
     }
+
+    //when guess is to low
   } else if (guess < secretNumber) {
     if (score > 0) {
       document.querySelector('.message').textContent = '📉 Too low!';
       score--;
       document.querySelector('.score').textContent = score;
+      document.querySelector('body').style.backgroundColor = '#ff0000';
     } else {
       document.querySelector('.message').textContent = '💥 You lost the game!';
     }
