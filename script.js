@@ -2,7 +2,7 @@
 
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
-
+let highscore = 0;
 //Math.random() returns value from 0 to 1 if we specify the multiply number we get random number from 0 to 20 in this case
 //Math.trunc() change the returning value to integer 1,5 to 1
 //We also adds 1 to the ending value to increase the value to 20 because we are ending with 19.99999999 at the end
@@ -26,7 +26,10 @@ document.querySelector('.check').addEventListener('click', function() {
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
     document.querySelector('.number').textContent = secretNumber;
-
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector('.highscore').textContent = score;
+    }
     //when quess is to high
   } else if (guess > secretNumber) {
     if (score > 0) {
@@ -63,4 +66,5 @@ document.querySelector('.again').addEventListener('click', function() {
   score = 20;
   document.querySelector('.score').textContent = score;
   document.querySelector('.number').style.width = '15rem';
+  document.querySelector('.highscore').textContent = 0;
 });
